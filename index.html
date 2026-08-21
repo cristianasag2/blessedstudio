@@ -103,26 +103,44 @@
   }
   .brand-mark .brand-text{display:flex; flex-direction:column; line-height:1.1;}
   .nav-links{display:flex; gap:34px; align-items:center;}
-  .nav-links a{
+  .nav-link{
     font-size:12px; text-transform:uppercase; letter-spacing:0.14em;
     color:var(--ink-soft);
     position:relative; padding-bottom:4px;
   }
-  .nav-links a::after{
+  .nav-link::after{
     content:""; position:absolute; left:0; bottom:0; width:0; height:1px;
     background:var(--blue); transition:width .3s ease;
   }
-  .nav-links a:hover::after{width:100%;}
+  .nav-link:hover::after{width:100%;}
   .nav-cta{
     display:inline-flex; align-items:center; gap:8px;
-    background:var(--ink); color:var(--cream);
-    padding:10px 20px; font-size:11px; text-transform:uppercase; letter-spacing:0.16em;
+    background:var(--blue-deep); color:#FFFFFF;
+    padding:10px 22px; font-size:11px; text-transform:uppercase; letter-spacing:0.16em;
     border-radius:var(--radius);
-    transition:background .3s ease;
+    border:1px solid var(--blue-deep);
+    transition:background .3s ease, color .3s ease, border-color .3s ease;
   }
-  .nav-cta:hover{background:var(--blue-deep);}
-  .nav-toggle{display:none; background:none; border:none; flex-direction:column; gap:5px; width:26px;}
-  .nav-toggle span{display:block; height:1px; background:var(--ink); width:100%;}
+  .nav-cta:hover{background:var(--blue); border-color:var(--blue); color:#FFFFFF;}
+  .nav-toggle{
+    display:none; background:none; border:none; flex-direction:column;
+    justify-content:center; align-items:center; gap:5px; width:26px; height:26px;
+    flex-shrink:0; position:relative; z-index:1001;
+  }
+  .nav-toggle span{
+    display:block; height:1px; width:100%; background:var(--ink);
+    transition:transform .3s ease, opacity .3s ease;
+  }
+  .nav-toggle.is-open span:nth-child(1){transform:translateY(6px) rotate(45deg);}
+  .nav-toggle.is-open span:nth-child(2){opacity:0;}
+  .nav-toggle.is-open span:nth-child(3){transform:translateY(-6px) rotate(-45deg);}
+
+  /* ---------- MOBILE MENU OVERLAY ---------- */
+  /* Rendered as a sibling of <header>, at the top level of <body>, so it is
+     never affected by the header's backdrop-filter (which would otherwise
+     create a containing block for position:fixed descendants and break
+     full-screen positioning). Hidden entirely above the mobile breakpoint. */
+  .mobile-menu{display:none;}
 
   /* ---------- HERO ---------- */
   .hero{
@@ -411,14 +429,7 @@
     .footer-top{grid-template-columns:1fr; gap:36px;}
   }
   @media (max-width:760px){
-    .nav-links{
-      position:fixed; top:64px; left:0; right:0; bottom:0;
-      background:var(--cream); flex-direction:column; justify-content:flex-start;
-      padding:40px 28px; gap:26px;
-      transform:translateX(100%); transition:transform .4s ease;
-    }
-    .nav-links.open{transform:translateX(0);}
-    .nav-links a{font-size:15px;}
+    .nav-links{display:none;}
     .nav-cta{width:100%; justify-content:center;}
     .nav-toggle{display:flex;}
     .brand-mark{font-size:16px;}
@@ -428,7 +439,39 @@
     .service-row{flex-wrap:wrap;}
     .service-right{margin-left:auto;}
     .zone-grid{grid-template-columns:1fr 1fr;}
+
+    .mobile-menu{
+      display:block;
+      position:fixed; inset:0; z-index:1000;
+      background:var(--cream);
+      opacity:0; visibility:hidden; pointer-events:none;
+      transform:translateX(100%);
+      transition:transform .4s ease, opacity .4s ease, visibility 0s linear .4s;
+      overflow-y:auto;
+    }
+    .mobile-menu.open{
+      opacity:1; visibility:visible; pointer-events:auto;
+      transform:translateX(0);
+      transition:transform .4s ease, opacity .4s ease, visibility 0s linear 0s;
+    }
+    .mobile-menu-inner{
+      min-height:100%;
+      display:flex; flex-direction:column;
+      padding:104px 32px 48px;
+    }
+    .mobile-menu-links{
+      display:flex; flex-direction:column;
+      border-top:1px solid var(--line);
+    }
+    .mobile-menu-links a{
+      font-family:'Cormorant Garamond', serif;
+      font-size:26px; color:var(--ink);
+      padding:20px 2px;
+      border-bottom:1px solid var(--line);
+    }
+    .mobile-menu-cta{margin-top:36px;}
   }
+  body.menu-open{overflow:hidden;}
   @media (max-width:480px){
     .zone-grid{grid-template-columns:1fr;}
     .wrap{padding:0 20px;}
@@ -448,18 +491,32 @@
       <span class="brand-text">Blessed Beauty Studio<span class="brand-sub">by Belinda Santos</span></span>
     </a>
     <nav class="nav-links" id="navLinks">
+      <a href="#esencia" class="nav-link">Esencia</a>
+      <a href="#servicios" class="nav-link">Servicios</a>
+      <a href="#proceso" class="nav-link">Proceso</a>
+      <a href="#politicas" class="nav-link">Políticas</a>
+      <a href="#faq" class="nav-link">Preguntas</a>
+      <a href="https://wa.me/527821286531?text=Hola%2C%20me%20gustar%C3%ADa%20agendar%20una%20cita%20en%20Blessed%20Beauty%20Studio" class="nav-cta" target="_blank" rel="noopener">Agendar Cita</a>
+    </nav>
+    <button class="nav-toggle" id="navToggle" aria-label="Abrir menú" aria-expanded="false" aria-controls="mobileMenu">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+</header>
+
+<!-- ============ MENÚ MÓVIL (overlay a pantalla completa) ============ -->
+<div class="mobile-menu" id="mobileMenu">
+  <div class="mobile-menu-inner">
+    <nav class="mobile-menu-links">
       <a href="#esencia">Esencia</a>
       <a href="#servicios">Servicios</a>
       <a href="#proceso">Proceso</a>
       <a href="#politicas">Políticas</a>
       <a href="#faq">Preguntas</a>
-      <a href="https://wa.me/527821286531?text=Hola%2C%20me%20gustar%C3%ADa%20agendar%20una%20cita%20en%20Blessed%20Beauty%20Studio" class="nav-cta" target="_blank" rel="noopener">Agendar Cita</a>
     </nav>
-    <button class="nav-toggle" id="navToggle" aria-label="Abrir menú">
-      <span></span><span></span><span></span>
-    </button>
+    <a href="https://wa.me/527821286531?text=Hola%2C%20me%20gustar%C3%ADa%20agendar%20una%20cita%20en%20Blessed%20Beauty%20Studio" class="nav-cta mobile-menu-cta" target="_blank" rel="noopener">Agendar Cita</a>
   </div>
-</header>
+</div>
 
 <!-- ============ HERO ============ -->
 <section class="hero" id="top">
@@ -823,8 +880,29 @@
 
   const navToggle = document.getElementById('navToggle');
   const navLinks = document.getElementById('navLinks');
-  navToggle.addEventListener('click', () => navLinks.classList.toggle('open'));
-  navLinks.querySelectorAll('a').forEach(a => a.addEventListener('click', () => navLinks.classList.remove('open')));
+  const mobileMenu = document.getElementById('mobileMenu');
+
+  function closeMobileMenu(){
+    mobileMenu.classList.remove('open');
+    navToggle.classList.remove('is-open');
+    navToggle.setAttribute('aria-expanded', 'false');
+    navToggle.setAttribute('aria-label', 'Abrir menú');
+    document.body.classList.remove('menu-open');
+  }
+  function openMobileMenu(){
+    mobileMenu.classList.add('open');
+    navToggle.classList.add('is-open');
+    navToggle.setAttribute('aria-expanded', 'true');
+    navToggle.setAttribute('aria-label', 'Cerrar menú');
+    document.body.classList.add('menu-open');
+  }
+  navToggle.addEventListener('click', () => {
+    mobileMenu.classList.contains('open') ? closeMobileMenu() : openMobileMenu();
+  });
+  mobileMenu.querySelectorAll('a').forEach(a => a.addEventListener('click', closeMobileMenu));
+  window.addEventListener('keydown', e => { if (e.key === 'Escape') closeMobileMenu(); });
+  window.addEventListener('resize', () => { if (window.innerWidth > 760) closeMobileMenu(); });
+  // Desktop nav links (visible above the mobile breakpoint) need no toggle logic.
 
   /* ===================== SERVICE TABS ===================== */
   const tabBtns = document.querySelectorAll('.tab-btn');
