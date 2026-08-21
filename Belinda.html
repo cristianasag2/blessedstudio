@@ -1,0 +1,862 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Blessed Beauty Studio | Belinda Santos — Poza Rica, Ver.</title>
+<meta name="description" content="Blessed Beauty Studio by Belinda Santos. Faciales, corporales y depilación con cera española en Poza Rica, Veracruz. Agenda tu cita por WhatsApp.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,400&family=Jost:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --cream:#FAF6EF;
+    --cream-deep:#F1E9DC;
+    --paper:#FFFFFF;
+    --ink:#1B1A18;
+    --ink-soft:#3A3835;
+    --ink-faint:#8A8478;
+    --blue:#2E4A68;
+    --blue-deep:#1C2F44;
+    --blue-soft:#7E9DB8;
+    --line:rgba(27,26,24,0.12);
+    --line-on-dark:rgba(255,255,255,0.14);
+    --radius:2px;
+    --maxw:1180px;
+  }
+
+  *{box-sizing:border-box; margin:0; padding:0;}
+  html{scroll-behavior:smooth;}
+  @media (prefers-reduced-motion: reduce){
+    html{scroll-behavior:auto;}
+    *{animation-duration:0.001ms !important; animation-iteration-count:1 !important; transition-duration:0.001ms !important;}
+  }
+
+  body{
+    font-family:'Jost', sans-serif;
+    background:var(--cream);
+    color:var(--ink);
+    font-weight:300;
+    line-height:1.6;
+    -webkit-font-smoothing:antialiased;
+    overflow-x:hidden;
+  }
+
+  h1,h2,h3,h4{
+    font-family:'Cormorant Garamond', serif;
+    font-weight:500;
+    letter-spacing:0.01em;
+    color:var(--ink);
+  }
+
+  a{color:inherit; text-decoration:none;}
+  img{max-width:100%; display:block;}
+  ul{list-style:none;}
+  button{font-family:inherit; cursor:pointer;}
+
+  .wrap{max-width:var(--maxw); margin:0 auto; padding:0 28px;}
+
+  .eyebrow{
+    font-family:'Jost', sans-serif;
+    text-transform:uppercase;
+    font-size:12px;
+    letter-spacing:0.32em;
+    color:var(--blue);
+    display:flex;
+    align-items:center;
+    gap:10px;
+    margin-bottom:18px;
+  }
+  .eyebrow .mini-heart{width:10px; height:10px; flex-shrink:0;}
+  .eyebrow .mini-heart path{fill:var(--blue);}
+
+  .heart-icon path{fill:currentColor;}
+
+  /* ---------- NAV ---------- */
+  header.nav{
+    position:fixed; top:0; left:0; right:0; z-index:500;
+    background:rgba(250,246,239,0.86);
+    backdrop-filter:blur(10px);
+    border-bottom:1px solid transparent;
+    transition:border-color .4s ease, background .4s ease;
+  }
+  header.nav.scrolled{
+    border-bottom:1px solid var(--line);
+    background:rgba(250,246,239,0.97);
+  }
+  .nav-inner{
+    max-width:var(--maxw); margin:0 auto; padding:16px 28px;
+    display:flex; align-items:center; justify-content:space-between;
+  }
+  .brand-mark{
+    display:flex; align-items:center; gap:10px;
+    font-family:'Cormorant Garamond', serif;
+    font-size:19px; letter-spacing:0.015em;
+    color:var(--ink);
+    white-space:nowrap;
+  }
+  .brand-mark svg{width:16px; height:16px; color:var(--blue); flex-shrink:0;}
+  .brand-mark .brand-sub{
+    display:block; font-family:'Jost', sans-serif; font-size:9px;
+    letter-spacing:0.18em; text-transform:uppercase; color:var(--ink-faint);
+    margin-top:1px;
+  }
+  .brand-mark .brand-text{display:flex; flex-direction:column; line-height:1.1;}
+  .nav-links{display:flex; gap:34px; align-items:center;}
+  .nav-links a{
+    font-size:12px; text-transform:uppercase; letter-spacing:0.14em;
+    color:var(--ink-soft);
+    position:relative; padding-bottom:4px;
+  }
+  .nav-links a::after{
+    content:""; position:absolute; left:0; bottom:0; width:0; height:1px;
+    background:var(--blue); transition:width .3s ease;
+  }
+  .nav-links a:hover::after{width:100%;}
+  .nav-cta{
+    display:inline-flex; align-items:center; gap:8px;
+    background:var(--ink); color:var(--cream);
+    padding:10px 20px; font-size:11px; text-transform:uppercase; letter-spacing:0.16em;
+    border-radius:var(--radius);
+    transition:background .3s ease;
+  }
+  .nav-cta:hover{background:var(--blue-deep);}
+  .nav-toggle{display:none; background:none; border:none; flex-direction:column; gap:5px; width:26px;}
+  .nav-toggle span{display:block; height:1px; background:var(--ink); width:100%;}
+
+  /* ---------- HERO ---------- */
+  .hero{
+    position:relative;
+    min-height:100vh;
+    display:flex; align-items:center; justify-content:center;
+    text-align:center;
+    padding:140px 24px 90px;
+    background:
+      radial-gradient(ellipse at 50% 0%, rgba(46,74,104,0.06), transparent 60%),
+      var(--cream);
+    overflow:hidden;
+  }
+  .hero-content{position:relative; z-index:2; max-width:760px;}
+  .hero-verse{
+    font-family:'Jost'; font-size:11px; letter-spacing:0.28em; text-transform:uppercase;
+    color:var(--blue); margin-bottom:26px;
+    display:inline-flex; align-items:center; gap:12px;
+  }
+  .hero-verse .rule{width:28px; height:1px; background:var(--blue-soft);}
+  .hero-title{
+    font-size:clamp(46px, 9vw, 92px);
+    line-height:0.98;
+    font-weight:500;
+    color:var(--ink);
+    margin-bottom:6px;
+    letter-spacing:0.005em;
+  }
+  .hero-title em{font-style:italic; color:var(--blue);}
+  .hero-sub{
+    font-family:'Jost'; font-weight:300; font-size:15px;
+    letter-spacing:0.06em; color:var(--ink-soft);
+    margin-bottom:30px;
+  }
+  .hero-location{
+    display:inline-flex; align-items:center; gap:8px;
+    font-size:12px; letter-spacing:0.14em; text-transform:uppercase;
+    color:var(--ink-faint); margin-bottom:44px;
+  }
+  .hero-location svg{width:12px; height:12px;}
+  .btn-primary{
+    display:inline-flex; align-items:center; gap:12px;
+    background:var(--blue-deep); color:#fff;
+    padding:19px 40px;
+    font-size:12px; text-transform:uppercase; letter-spacing:0.2em;
+    border-radius:var(--radius);
+    border:1px solid var(--blue-deep);
+    transition:all .35s ease;
+  }
+  .btn-primary:hover{background:transparent; color:var(--blue-deep);}
+  .btn-primary svg{width:17px; height:17px;}
+
+  .scroll-cue{
+    position:absolute; bottom:36px; left:50%; transform:translateX(-50%);
+    display:flex; flex-direction:column; align-items:center; gap:10px;
+    color:var(--ink-faint); font-size:10px; letter-spacing:0.2em; text-transform:uppercase;
+  }
+  .scroll-cue .line{width:1px; height:36px; background:linear-gradient(var(--ink-faint), transparent); animation:pulseLine 2.4s ease-in-out infinite;}
+  @keyframes pulseLine{0%,100%{opacity:.3;} 50%{opacity:1;}}
+
+  /* ---------- SECTION GENERIC ---------- */
+  section{padding:118px 0;}
+  .section-head{max-width:640px; margin-bottom:64px;}
+  .section-head.center{margin-left:auto; margin-right:auto; text-align:center;}
+  .section-title{font-size:clamp(32px,4.6vw,48px); line-height:1.08;}
+  .section-lede{font-size:15px; color:var(--ink-soft); margin-top:18px; max-width:520px;}
+  .section-head.center .section-lede{margin-left:auto; margin-right:auto;}
+
+  /* ---------- ESENCIA ---------- */
+  .essence{background:var(--paper); border-top:1px solid var(--line); border-bottom:1px solid var(--line);}
+  .essence-grid{display:grid; grid-template-columns:0.9fr 1.1fr; gap:80px; align-items:center;}
+  .essence-quote{
+    font-family:'Cormorant Garamond', serif;
+    font-style:italic; font-weight:400;
+    font-size:clamp(22px,2.4vw,28px);
+    line-height:1.55; color:var(--ink);
+    position:relative; padding-left:30px;
+  }
+  .essence-quote::before{
+    content:""; position:absolute; left:0; top:6px; bottom:6px; width:2px; background:var(--blue);
+  }
+  .founder-card{
+    margin-top:44px; padding-top:36px; border-top:1px solid var(--line);
+    display:flex; gap:18px; align-items:flex-start;
+  }
+  .founder-photo{
+    width:64px; height:64px; border-radius:50%;
+    object-fit:cover; object-position:center top;
+    flex-shrink:0;
+    border:1px solid var(--line);
+    box-shadow:0 6px 20px rgba(27,26,24,0.08);
+    background:var(--cream-deep);
+  }
+  .founder-name{font-family:'Jost'; font-size:14px; letter-spacing:0.04em; color:var(--ink); margin-bottom:4px;}
+  .founder-role{font-size:12px; letter-spacing:0.1em; text-transform:uppercase; color:var(--blue);}
+  .essence-pillars{display:flex; flex-direction:column; gap:0;}
+  .pillar{
+    display:flex; gap:22px; padding:26px 0; border-bottom:1px solid var(--line);
+  }
+  .pillar:first-child{padding-top:0;}
+  .pillar-mark{font-family:'Cormorant Garamond'; font-style:italic; font-size:22px; color:var(--blue-soft); width:34px; flex-shrink:0;}
+  .pillar h4{font-size:19px; margin-bottom:6px; font-weight:500;}
+  .pillar p{font-size:13.5px; color:var(--ink-soft);}
+
+  /* ---------- SERVICES ---------- */
+  .services{background:var(--cream);}
+  .tabs{
+    display:flex; gap:10px; margin-bottom:56px; border-bottom:1px solid var(--line);
+    overflow-x:auto; -ms-overflow-style:none; scrollbar-width:none;
+  }
+  .tabs::-webkit-scrollbar{display:none;}
+  .tab-btn{
+    background:none; border:none; white-space:nowrap;
+    padding:16px 6px; margin-right:34px;
+    font-family:'Cormorant Garamond'; font-size:22px; color:var(--ink-faint);
+    position:relative; transition:color .3s ease;
+  }
+  .tab-btn::after{
+    content:""; position:absolute; left:0; right:0; bottom:-1px; height:2px;
+    background:var(--blue); transform:scaleX(0); transform-origin:left; transition:transform .3s ease;
+  }
+  .tab-btn.active{color:var(--ink);}
+  .tab-btn.active::after{transform:scaleX(1);}
+
+  .tab-panel{display:none;}
+  .tab-panel.active{display:block; animation:fadeUp .5s ease;}
+  @keyframes fadeUp{from{opacity:0; transform:translateY(10px);} to{opacity:1; transform:translateY(0);}}
+
+  .service-group-title{
+    font-size:13px; text-transform:uppercase; letter-spacing:0.18em; color:var(--blue);
+    margin:44px 0 18px; display:flex; align-items:center; gap:12px;
+  }
+  .service-group-title:first-child{margin-top:0;}
+  .service-group-title::after{content:""; flex:1; height:1px; background:var(--line);}
+
+  .service-list{border-top:1px solid var(--line);}
+  .service-item{border-bottom:1px solid var(--line);}
+  .service-row{
+    width:100%; background:none; border:none; text-align:left;
+    display:flex; justify-content:space-between; align-items:center; gap:16px;
+    padding:18px 4px;
+    transition:padding-left .3s ease, background .3s ease;
+  }
+  .service-row:hover{padding-left:12px; background:rgba(46,74,104,0.035);}
+  .service-name-wrap{display:flex; flex-direction:column; gap:5px; flex:1; min-width:0;}
+  .service-name-line{display:flex; align-items:center; gap:10px; flex-wrap:wrap;}
+  .service-name{font-family:'Jost'; font-size:15.5px; font-weight:400; color:var(--ink);}
+  .service-sub{font-size:12px; color:var(--ink-faint); font-style:italic;}
+  .service-badge{
+    font-size:9.5px; text-transform:uppercase; letter-spacing:0.08em;
+    color:var(--blue); border:1px solid var(--blue-soft); border-radius:20px;
+    padding:2px 9px; white-space:nowrap;
+  }
+  .service-duration{font-size:11.5px; letter-spacing:0.04em; color:var(--ink-faint);}
+  .service-right{display:flex; align-items:center; gap:16px; flex-shrink:0;}
+  .service-price{
+    font-family:'Cormorant Garamond'; font-size:21px; color:var(--blue-deep);
+    white-space:nowrap;
+  }
+  .service-plus{
+    width:16px; height:16px; position:relative; flex-shrink:0;
+  }
+  .service-plus::before, .service-plus::after{
+    content:""; position:absolute; background:var(--ink-faint); transition:transform .3s ease, opacity .3s ease;
+  }
+  .service-plus::before{left:0; top:50%; width:100%; height:1px; transform:translateY(-50%);}
+  .service-plus::after{top:0; left:50%; width:1px; height:100%; transform:translateX(-50%);}
+  .service-item.open .service-plus::after{opacity:0; transform:translateX(-50%) rotate(90deg);}
+
+  .service-desc{max-height:0; overflow:hidden; transition:max-height .4s ease;}
+  .service-desc-inner{padding:0 4px 22px; font-size:13px; color:var(--ink-soft); max-width:640px; line-height:1.7;}
+  .service-desc-inner strong{color:var(--ink); font-weight:500;}
+
+  .zone-grid{
+    display:grid; grid-template-columns:repeat(auto-fill,minmax(220px,1fr));
+    gap:1px; background:var(--line); border:1px solid var(--line);
+  }
+  .zone-item{
+    background:var(--paper); padding:20px 22px;
+    display:flex; justify-content:space-between; align-items:center; gap:12px;
+  }
+  .zone-name{font-size:14.5px;}
+  .zone-price{font-family:'Cormorant Garamond'; font-size:19px; color:var(--blue-deep);}
+
+  .services-note{
+    margin-top:40px; font-size:12.5px; color:var(--ink-faint); font-style:italic;
+    border-left:2px solid var(--line); padding-left:16px;
+  }
+
+  /* ---------- PROCESS ---------- */
+  .process{background:var(--blue-deep); color:var(--cream);}
+  .process .section-head .section-title{color:#fff;}
+  .process .section-head .section-lede{color:var(--blue-soft);}
+  .process .eyebrow{color:var(--blue-soft);}
+  .process .eyebrow .mini-heart path{fill:var(--blue-soft);}
+  .process-track{
+    display:grid; grid-template-columns:repeat(5,1fr); gap:0;
+    border-top:1px solid var(--line-on-dark);
+  }
+  .process-step{
+    padding:34px 22px 0; border-left:1px solid var(--line-on-dark); position:relative;
+  }
+  .process-step:last-child{border-right:1px solid var(--line-on-dark);}
+  .process-num{
+    font-family:'Cormorant Garamond'; font-style:italic; font-size:34px; color:var(--blue-soft);
+    display:block; margin-bottom:18px;
+  }
+  .process-step h4{color:#fff; font-size:19px; margin-bottom:10px; font-weight:500;}
+  .process-step p{font-size:13px; color:rgba(250,246,239,0.65); line-height:1.65;}
+
+  /* ---------- POLICIES ---------- */
+  .policies{background:var(--paper); border-top:1px solid var(--line);}
+  .policy-grid{display:grid; grid-template-columns:1fr 1fr; gap:70px;}
+  .policy-block h3{font-size:24px; margin-bottom:24px; display:flex; align-items:center; gap:12px;}
+  .policy-block h3 svg{width:20px; height:20px; color:var(--blue);}
+  .policy-list li{
+    display:flex; gap:14px; padding:16px 0; border-bottom:1px solid var(--line);
+    font-size:14px; color:var(--ink-soft);
+  }
+  .policy-list li:last-child{border-bottom:none;}
+  .policy-list li .dot{
+    width:5px; height:5px; border-radius:50%; background:var(--blue); flex-shrink:0; margin-top:8px;
+  }
+  .policy-list strong{color:var(--ink); font-weight:500;}
+
+  /* ---------- FAQ ---------- */
+  .faq{background:var(--cream-deep);}
+  .faq-list{max-width:820px; margin:0 auto; border-top:1px solid var(--line);}
+  .faq-item{border-bottom:1px solid var(--line);}
+  .faq-q{
+    width:100%; text-align:left; background:none; border:none;
+    display:flex; justify-content:space-between; align-items:center; gap:20px;
+    padding:26px 4px; font-family:'Cormorant Garamond'; font-size:20px; color:var(--ink);
+  }
+  .faq-q .plus{width:22px; height:22px; flex-shrink:0; position:relative;}
+  .faq-q .plus::before, .faq-q .plus::after{
+    content:""; position:absolute; background:var(--blue); transition:transform .3s ease;
+  }
+  .faq-q .plus::before{left:0; top:50%; width:100%; height:1px; transform:translateY(-50%);}
+  .faq-q .plus::after{top:0; left:50%; width:1px; height:100%; transform:translateX(-50%);}
+  .faq-item.open .faq-q .plus::after{transform:translateX(-50%) rotate(90deg); opacity:0;}
+  .faq-a{max-height:0; overflow:hidden; transition:max-height .4s ease;}
+  .faq-a-inner{padding:0 4px 28px; font-size:14.5px; color:var(--ink-soft); max-width:640px;}
+
+  /* ---------- FOOTER ---------- */
+  footer{background:var(--ink); color:var(--cream); padding:90px 0 30px;}
+  .footer-top{
+    display:grid; grid-template-columns:1.3fr 1fr 1fr; gap:60px;
+    padding-bottom:60px; border-bottom:1px solid var(--line-on-dark);
+  }
+  .footer-brand{display:flex; align-items:center; gap:10px; font-family:'Cormorant Garamond'; font-size:26px; margin-bottom:18px;}
+  .footer-brand svg{width:18px; height:18px; color:var(--blue-soft);}
+  .footer-col p, .footer-col a{font-size:13.5px; color:rgba(250,246,239,0.6); line-height:2;}
+  .footer-col h5{font-size:11px; text-transform:uppercase; letter-spacing:0.18em; color:var(--blue-soft); margin-bottom:18px;}
+  .footer-col a{display:block;}
+  .footer-col a:hover{color:#fff;}
+  .footer-verse{font-family:'Cormorant Garamond'; font-style:italic; font-size:16px; color:rgba(250,246,239,0.55); max-width:280px;}
+  .footer-bottom{
+    padding-top:28px; display:flex; justify-content:space-between; align-items:center;
+    font-size:11px; letter-spacing:0.05em; color:rgba(250,246,239,0.35); flex-wrap:wrap; gap:10px;
+  }
+
+  /* ---------- FLOATING WHATSAPP ---------- */
+  .wa-float{
+    position:fixed; right:22px; bottom:22px; z-index:600;
+    width:58px; height:58px; border-radius:50%;
+    background:#1E9E5A;
+    display:flex; align-items:center; justify-content:center;
+    box-shadow:0 10px 30px rgba(0,0,0,0.25);
+    transition:transform .3s ease;
+  }
+  .wa-float:hover{transform:scale(1.08);}
+  .wa-float svg{width:28px; height:28px; position:relative;}
+  .wa-float .ping{
+    position:absolute; inset:0; border-radius:50%; background:#1E9E5A;
+    animation:ping 2.6s cubic-bezier(0.4,0,0.6,1) infinite;
+  }
+  @keyframes ping{0%{transform:scale(1); opacity:0.6;} 100%{transform:scale(1.9); opacity:0;}}
+
+  /* ---------- RESPONSIVE ---------- */
+  @media (max-width:900px){
+    .essence-grid{grid-template-columns:1fr; gap:50px;}
+    .policy-grid{grid-template-columns:1fr; gap:50px;}
+    .process-track{grid-template-columns:repeat(2,1fr);}
+    .process-step{border-right:1px solid var(--line-on-dark) !important;}
+    .footer-top{grid-template-columns:1fr; gap:36px;}
+  }
+  @media (max-width:760px){
+    .nav-links{
+      position:fixed; top:64px; left:0; right:0; bottom:0;
+      background:var(--cream); flex-direction:column; justify-content:flex-start;
+      padding:40px 28px; gap:26px;
+      transform:translateX(100%); transition:transform .4s ease;
+    }
+    .nav-links.open{transform:translateX(0);}
+    .nav-links a{font-size:15px;}
+    .nav-cta{width:100%; justify-content:center;}
+    .nav-toggle{display:flex;}
+    .brand-mark{font-size:16px;}
+    .brand-mark .brand-sub{font-size:8px; letter-spacing:0.14em;}
+    .hero{padding-top:120px;}
+    section{padding:80px 0;}
+    .service-row{flex-wrap:wrap;}
+    .service-right{margin-left:auto;}
+    .zone-grid{grid-template-columns:1fr 1fr;}
+  }
+  @media (max-width:480px){
+    .zone-grid{grid-template-columns:1fr;}
+    .wrap{padding:0 20px;}
+  }
+
+  ::selection{background:var(--blue); color:#fff;}
+  :focus-visible{outline:2px solid var(--blue); outline-offset:3px;}
+</style>
+</head>
+<body>
+
+<!-- ============ NAV ============ -->
+<header class="nav" id="siteNav">
+  <div class="nav-inner">
+    <a href="#top" class="brand-mark">
+      <svg viewBox="0 0 32 29" class="heart-icon"><path d="M16 29C16 29 0 19.2 0 9.5C0 3.7 4.3 0 9.2 0C12.4 0 14.9 1.7 16 4.1C17.1 1.7 19.6 0 22.8 0C27.7 0 32 3.7 32 9.5C32 19.2 16 29 16 29Z"/></svg>
+      <span class="brand-text">Blessed Beauty Studio<span class="brand-sub">by Belinda Santos</span></span>
+    </a>
+    <nav class="nav-links" id="navLinks">
+      <a href="#esencia">Esencia</a>
+      <a href="#servicios">Servicios</a>
+      <a href="#proceso">Proceso</a>
+      <a href="#politicas">Políticas</a>
+      <a href="#faq">Preguntas</a>
+      <a href="https://wa.me/527821286531?text=Hola%2C%20me%20gustar%C3%ADa%20agendar%20una%20cita%20en%20Blessed%20Beauty%20Studio" class="nav-cta" target="_blank" rel="noopener">Agendar Cita</a>
+    </nav>
+    <button class="nav-toggle" id="navToggle" aria-label="Abrir menú">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+</header>
+
+<!-- ============ HERO ============ -->
+<section class="hero" id="top">
+  <div class="hero-content">
+    <div class="hero-verse"><span class="rule"></span> Colosenses 3:23 <span class="rule"></span></div>
+    <h1 class="hero-title">Blessed <em>Beauty</em><br>Studio</h1>
+    <p class="hero-sub">Beauty Studio by Belinda Santos</p>
+    <div class="hero-location">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M12 22s7-7.4 7-12.5A7 7 0 0 0 5 9.5C5 14.6 12 22 12 22Z"/><circle cx="12" cy="9.5" r="2.4"/></svg>
+      Poza Rica, Veracruz
+    </div>
+    <div>
+      <a href="https://wa.me/527821286531?text=Hola%2C%20me%20gustar%C3%ADa%20agendar%20una%20cita%20en%20Blessed%20Beauty%20Studio" class="btn-primary" target="_blank" rel="noopener">
+        <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12.04 2C6.58 2 2.13 6.45 2.13 11.91c0 1.87.5 3.61 1.44 5.14L2 22l5.13-1.51a9.85 9.85 0 0 0 4.91 1.29h.01c5.46 0 9.9-4.45 9.9-9.9C21.95 6.45 17.5 2 12.04 2Zm5.8 14.14c-.24.68-1.4 1.3-1.94 1.36-.5.06-1.05.1-1.7-.11-.39-.12-.9-.3-1.55-.58-2.73-1.18-4.51-3.94-4.65-4.13-.14-.19-1.11-1.48-1.11-2.82s.7-2 .95-2.27c.24-.27.53-.34.71-.34.18 0 .35 0 .5.01.16.01.38-.06.6.46.24.57.81 1.98.88 2.12.07.14.11.31.02.5-.09.19-.14.31-.28.48-.14.17-.29.37-.42.5-.14.14-.28.29-.12.57.16.28.72 1.19 1.55 1.93 1.06.95 1.96 1.24 2.24 1.38.28.14.44.12.6-.07.16-.19.68-.79.86-1.06.18-.27.36-.22.6-.13.24.09 1.53.72 1.79.85.26.13.43.19.5.3.07.11.07.61-.17 1.29Z"/></svg>
+        Agendar cita por WhatsApp
+      </a>
+    </div>
+  </div>
+  <div class="scroll-cue"><span class="line"></span>Descubre</div>
+</section>
+
+<!-- ============ ESENCIA ============ -->
+<section class="essence" id="esencia">
+  <div class="wrap essence-grid">
+    <div>
+      <div class="eyebrow"><svg class="mini-heart" viewBox="0 0 32 29"><path d="M16 29C16 29 0 19.2 0 9.5C0 3.7 4.3 0 9.2 0C12.4 0 14.9 1.7 16 4.1C17.1 1.7 19.6 0 22.8 0C27.7 0 32 3.7 32 9.5C32 19.2 16 29 16 29Z"/></svg>Nuestra esencia</div>
+      <p class="essence-quote">"Blessed es más que un estudio, es el resultado de fe, esfuerzo y amor por el arte de realzar tu belleza. Cada detalle, cada producto y cada técnica están pensados para ti, para que te sientas escuchada, cuidada y segura en tu propia piel."</p>
+      <div class="founder-card">
+        <img class="founder-photo" src="belinda.jpg" alt="Belinda Santos, fundadora de Blessed Beauty Studio">
+        <div>
+          <div class="founder-name">Belinda Santos</div>
+          <div class="founder-role">Cosmetóloga profesional &amp; fundadora</div>
+        </div>
+      </div>
+    </div>
+    <div class="essence-pillars">
+      <div class="pillar">
+        <span class="pillar-mark">I</span>
+        <div><h4>Fe como fundamento</h4><p>Cada tratamiento parte de un propósito mayor: servir con excelencia, como lo indica Colosenses 3:23.</p></div>
+      </div>
+      <div class="pillar">
+        <span class="pillar-mark">II</span>
+        <div><h4>Técnica profesional</h4><p>Protocolos diseñados y ejecutados por Belinda Santos, cosmetóloga certificada, con productos de grado profesional.</p></div>
+      </div>
+      <div class="pillar">
+        <span class="pillar-mark">III</span>
+        <div><h4>Cuidado personalizado</h4><p>Ninguna piel ni cuerpo es igual: cada plan de belleza se construye a partir de una valoración real.</p></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ SERVICIOS ============ -->
+<section class="services" id="servicios">
+  <div class="wrap">
+    <div class="section-head">
+      <div class="eyebrow"><svg class="mini-heart" viewBox="0 0 32 29"><path d="M16 29C16 29 0 19.2 0 9.5C0 3.7 4.3 0 9.2 0C12.4 0 14.9 1.7 16 4.1C17.1 1.7 19.6 0 22.8 0C27.7 0 32 3.7 32 9.5C32 19.2 16 29 16 29Z"/></svg>Menú de servicios</div>
+      <h2 class="section-title">Tratamientos hechos a tu medida</h2>
+      <p class="section-lede">Toca cualquier tratamiento para ver qué incluye. Precios y duraciones sujetos al diagnóstico previo.</p>
+    </div>
+
+    <div class="tabs" role="tablist">
+      <button class="tab-btn active" data-tab="faciales">Faciales</button>
+      <button class="tab-btn" data-tab="corporales">Corporales</button>
+      <button class="tab-btn" data-tab="smooth">Colección Smooth</button>
+    </div>
+
+    <!-- FACIALES -->
+    <div class="tab-panel active" id="panel-faciales">
+      <div class="service-list" id="list-faciales"></div>
+      <p class="services-note">Todos los faciales incluyen valoración de piel previa al tratamiento.</p>
+    </div>
+
+    <!-- CORPORALES -->
+    <div class="tab-panel" id="panel-corporales">
+      <div id="list-corporales"></div>
+      <p class="services-note">Precios de referencia por sesión individual; consulta paquetes por sesión múltiple al agendar.</p>
+    </div>
+
+    <!-- SMOOTH -->
+    <div class="tab-panel" id="panel-smooth">
+      <div class="service-group-title">Facial</div>
+      <div class="zone-grid">
+        <div class="zone-item"><span class="zone-name">Bozo</span><span class="zone-price">$90</span></div>
+        <div class="zone-item"><span class="zone-name">Mentón</span><span class="zone-price">$80</span></div>
+        <div class="zone-item"><span class="zone-name">Patillas</span><span class="zone-price">$100</span></div>
+        <div class="zone-item"><span class="zone-name">Cejas</span><span class="zone-price">$150</span></div>
+        <div class="zone-item"><span class="zone-name">Rostro completo</span><span class="zone-price">$350</span></div>
+      </div>
+      <div class="service-group-title">Corporal</div>
+      <div class="zone-grid">
+        <div class="zone-item"><span class="zone-name">Axilas</span><span class="zone-price">$180</span></div>
+        <div class="zone-item"><span class="zone-name">Medio brazo</span><span class="zone-price">$180</span></div>
+        <div class="zone-item"><span class="zone-name">Brazos completos</span><span class="zone-price">$300</span></div>
+        <div class="zone-item"><span class="zone-name">Media pierna</span><span class="zone-price">$250</span></div>
+        <div class="zone-item"><span class="zone-name">Pierna completa</span><span class="zone-price">$450</span></div>
+        <div class="zone-item"><span class="zone-name">Muslos</span><span class="zone-price">$280</span></div>
+        <div class="zone-item"><span class="zone-name">Bikini básico</span><span class="zone-price">$250</span></div>
+        <div class="zone-item"><span class="zone-name">Bikini profundo</span><span class="zone-price">$380</span></div>
+        <div class="zone-item"><span class="zone-name">Abdomen</span><span class="zone-price">$180</span></div>
+        <div class="zone-item"><span class="zone-name">Pecho</span><span class="zone-price">$300</span></div>
+        <div class="zone-item"><span class="zone-name">Espalda</span><span class="zone-price">$350</span></div>
+      </div>
+      <p class="services-note">Depilación con cera española: técnica profesional, precisa y de menor irritación para tu piel.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ============ PROCESO ============ -->
+<section class="process" id="proceso">
+  <div class="wrap">
+    <div class="section-head center" style="max-width:600px;">
+      <div class="eyebrow" style="justify-content:center;"><svg class="mini-heart" viewBox="0 0 32 29"><path d="M16 29C16 29 0 19.2 0 9.5C0 3.7 4.3 0 9.2 0C12.4 0 14.9 1.7 16 4.1C17.1 1.7 19.6 0 22.8 0C27.7 0 32 3.7 32 9.5C32 19.2 16 29 16 29Z"/></svg>Proceso de valoración</div>
+      <h2 class="section-title">Cinco pasos, un solo objetivo: tu piel</h2>
+    </div>
+  </div>
+  <div class="wrap" style="padding-top:10px;">
+    <div class="process-track">
+      <div class="process-step">
+        <span class="process-num">01</span>
+        <h4>Valoración</h4>
+        <p>Conversamos sobre tu historial, expectativas y estilo de vida antes de tocar tu piel o cuerpo.</p>
+      </div>
+      <div class="process-step">
+        <span class="process-num">02</span>
+        <h4>Análisis</h4>
+        <p>Evaluamos a detalle la piel o zona corporal a tratar para identificar sus necesidades reales.</p>
+      </div>
+      <div class="process-step">
+        <span class="process-num">03</span>
+        <h4>Diseño</h4>
+        <p>Construimos un plan de tratamiento personalizado, con metas claras y realistas.</p>
+      </div>
+      <div class="process-step">
+        <span class="process-num">04</span>
+        <h4>Aplicación</h4>
+        <p>Ejecutamos el protocolo con productos profesionales y técnica certificada.</p>
+      </div>
+      <div class="process-step">
+        <span class="process-num">05</span>
+        <h4>Seguimiento</h4>
+        <p>Acompañamos tu evolución sesión a sesión, ajustando el plan cuando es necesario.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ POLÍTICAS ============ -->
+<section class="policies" id="politicas">
+  <div class="wrap">
+    <div class="section-head">
+      <div class="eyebrow"><svg class="mini-heart" viewBox="0 0 32 29"><path d="M16 29C16 29 0 19.2 0 9.5C0 3.7 4.3 0 9.2 0C12.4 0 14.9 1.7 16 4.1C17.1 1.7 19.6 0 22.8 0C27.7 0 32 3.7 32 9.5C32 19.2 16 29 16 29Z"/></svg>Buenas prácticas</div>
+      <h2 class="section-title">Políticas de citas y contraindicaciones</h2>
+    </div>
+    <div class="policy-grid">
+      <div class="policy-block">
+        <h3><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3.5 2"/></svg>Sobre tu cita</h3>
+        <ul class="policy-list">
+          <li><span class="dot"></span><span><strong>Tolerancia de 10 minutos.</strong> Pasado este tiempo, la cita podría reagendarse para respetar a las demás clientas.</span></li>
+          <li><span class="dot"></span><span><strong>Cancelaciones con 24 hrs de anticipación.</strong> Así podemos ofrecer el espacio a alguien más.</span></li>
+          <li><span class="dot"></span><span><strong>Puntualidad.</strong> Te pedimos llegar unos minutos antes para iniciar tu valoración con calma.</span></li>
+          <li><span class="dot"></span><span><strong>Reagendas.</strong> Puedes reprogramar tu cita directamente por WhatsApp.</span></li>
+        </ul>
+      </div>
+      <div class="policy-block">
+        <h3><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M12 22s7-9 7-14a7 7 0 1 0-14 0c0 5 7 14 7 14Z"/></svg>Contraindicaciones generales</h3>
+        <ul class="policy-list">
+          <li><span class="dot"></span><span><strong>Embarazo o lactancia.</strong> Algunos tratamientos requieren autorización médica o se posponen.</span></li>
+          <li><span class="dot"></span><span><strong>Procesos infecciosos activos</strong> en piel, heridas abiertas o quemaduras solares recientes.</span></li>
+          <li><span class="dot"></span><span><strong>Padecimientos crónicos</strong> no controlados: siempre infórmanos antes de tu sesión.</span></li>
+          <li><span class="dot"></span><span><strong>Honestidad ante todo.</strong> Comparte tu historial clínico completo para tu seguridad.</span></li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ FAQ ============ -->
+<section class="faq" id="faq">
+  <div class="wrap">
+    <div class="section-head center">
+      <div class="eyebrow" style="justify-content:center;"><svg class="mini-heart" viewBox="0 0 32 29"><path d="M16 29C16 29 0 19.2 0 9.5C0 3.7 4.3 0 9.2 0C12.4 0 14.9 1.7 16 4.1C17.1 1.7 19.6 0 22.8 0C27.7 0 32 3.7 32 9.5C32 19.2 16 29 16 29Z"/></svg>Preguntas frecuentes</div>
+      <h2 class="section-title">Antes de agendar</h2>
+    </div>
+    <div class="faq-list">
+      <div class="faq-item">
+        <button class="faq-q">¿Necesito cita previa?<span class="plus"></span></button>
+        <div class="faq-a"><div class="faq-a-inner">Sí, trabajamos exclusivamente con cita previa para poder dedicarte el tiempo y la atención que tu tratamiento merece.</div></div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-q">¿Aceptan pagos con tarjeta?<span class="plus"></span></button>
+        <div class="faq-a"><div class="faq-a-inner">Sí, contamos con terminal para pagos con tarjeta de crédito y débito, además de efectivo.</div></div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-q">¿Cuántas sesiones necesito?<span class="plus"></span></button>
+        <div class="faq-a"><div class="faq-a-inner">Depende del objetivo y del diagnóstico inicial. En tu valoración te compartimos un plan con el número de sesiones recomendado.</div></div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-q">¿Puedo llevar acompañante?<span class="plus"></span></button>
+        <div class="faq-a"><div class="faq-a-inner">Por comodidad de todas nuestras clientas, preferimos que asistas sola a tu sesión, salvo casos especiales que puedes consultarnos.</div></div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-q">¿Cómo agendo mi cita?<span class="plus"></span></button>
+        <div class="faq-a"><div class="faq-a-inner">Directamente por WhatsApp: escríbenos con el servicio de tu interés y te confirmamos disponibilidad de horario.</div></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ FOOTER ============ -->
+<footer id="contacto">
+  <div class="wrap">
+    <div class="footer-top">
+      <div>
+        <div class="footer-brand">
+          <svg viewBox="0 0 32 29" class="heart-icon" style="color:var(--blue-soft);"><path d="M16 29C16 29 0 19.2 0 9.5C0 3.7 4.3 0 9.2 0C12.4 0 14.9 1.7 16 4.1C17.1 1.7 19.6 0 22.8 0C27.7 0 32 3.7 32 9.5C32 19.2 16 29 16 29Z"/></svg>
+          Blessed Beauty Studio
+        </div>
+        <p class="footer-verse">"Todo lo que hagáis, hacedlo de corazón, como para el Señor." — Colosenses 3:23</p>
+      </div>
+      <div class="footer-col">
+        <h5>Estudio</h5>
+        <a href="#esencia">Esencia</a>
+        <a href="#servicios">Servicios</a>
+        <a href="#proceso">Proceso</a>
+        <a href="#politicas">Políticas</a>
+        <a href="#faq">Preguntas</a>
+      </div>
+      <div class="footer-col">
+        <h5>Visítanos</h5>
+        <p>Poza Rica, Veracruz</p>
+        <a href="https://wa.me/527821286531?text=Hola%2C%20me%20gustar%C3%ADa%20agendar%20una%20cita%20en%20Blessed%20Beauty%20Studio" target="_blank" rel="noopener">WhatsApp: 782 128 6531</a>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <span>© <span id="year"></span> Blessed Beauty Studio by Belinda Santos</span>
+      <span>Diseñado con propósito</span>
+    </div>
+  </div>
+</footer>
+
+<!-- ============ WHATSAPP FLOTANTE ============ -->
+<a class="wa-float" href="https://wa.me/527821286531?text=Hola%2C%20me%20gustar%C3%ADa%20agendar%20una%20cita%20en%20Blessed%20Beauty%20Studio" target="_blank" rel="noopener" aria-label="Agendar cita por WhatsApp">
+  <span class="ping"></span>
+  <svg viewBox="0 0 24 24" fill="#fff"><path d="M12.04 2C6.58 2 2.13 6.45 2.13 11.91c0 1.87.5 3.61 1.44 5.14L2 22l5.13-1.51a9.85 9.85 0 0 0 4.91 1.29h.01c5.46 0 9.9-4.45 9.9-9.9C21.95 6.45 17.5 2 12.04 2Zm5.8 14.14c-.24.68-1.4 1.3-1.94 1.36-.5.06-1.05.1-1.7-.11-.39-.12-.9-.3-1.55-.58-2.73-1.18-4.51-3.94-4.65-4.13-.14-.19-1.11-1.48-1.11-2.82s.7-2 .95-2.27c.24-.27.53-.34.71-.34.18 0 .35 0 .5.01.16.01.38-.06.6.46.24.57.81 1.98.88 2.12.07.14.11.31.02.5-.09.19-.14.31-.28.48-.14.17-.29.37-.42.5-.14.14-.28.29-.12.57.16.28.72 1.19 1.55 1.93 1.06.95 1.96 1.24 2.24 1.38.28.14.44.12.6-.07.16-.19.68-.79.86-1.06.18-.27.36-.22.6-.13.24.09 1.53.72 1.79.85.26.13.43.19.5.3.07.11.07.61-.17 1.29Z"/></svg>
+</a>
+
+<script>
+  /* ===================== DATOS DE SERVICIOS ===================== */
+  const faciales = [
+    { name:"Facial Juvenil", sub:"facial especial para juveniles", dur:"90 min", price:"$400", incl:"limpieza profunda suave, exfoliación ligera, vapor ozono, extracciones, alta frecuencia, LED azul, mascarilla calmante, hidratación ligera." },
+    { name:"Blessed Limpieza Profunda", dur:"90 min", price:"$450", incl:"higiene facial, exfoliación, vapor ozono, extracciones, alta frecuencia, túnel LED, mascarilla personalizada, hidratación profunda, protector solar." },
+    { name:"Blessed Clear Skin", sub:"facial control acné", dur:"75 min", price:"$590", incl:"higiene facial profunda, exfoliación personalizada, extracciones, alta frecuencia, ultrasonido con mixiología personalizada, mascarilla purificante, fototerapia LED, hidratación facial, protector solar SPF." },
+    { name:"Blessed Peach Fuzz", sub:"dermaplaning facial", dur:"45–60 min", price:"$500", incl:"higiene facial profunda, dermaplaning profesional, mascarilla calmante e hidratante, hidratación facial, protector solar SPF." },
+    { name:"Blessed Porcelain Skin", sub:"limpieza profunda + dermaplaning", dur:"75 min", price:"$650", incl:"higiene facial profunda, exfoliación personalizada, dermaplaning profesional, extracciones, mascarilla personalizada, hidratación facial profunda, protector solar SPF." },
+    { name:"Blessed Skin Balance", sub:"limpieza profunda + dermaplaning + ultrasonido personalizado", dur:"80 min", price:"$750" },
+    { name:"Blessed Vita Glow", sub:"facial hidratante + vitaminado", dur:"75 min", price:"$700" },
+    { name:"Blessed Age Restore", sub:"facial anti-edad con electroporación", dur:"70 min", price:"$550" },
+    { name:"Blessed Even Tone", sub:"facial despigmentante", dur:"70 min", price:"$650" },
+    { name:"Blessed Lift Therapy", sub:"facial reafirmante con radiofrecuencia", dur:"75 min", price:"$650" },
+    { name:"Blessed Luminous Peel", sub:"dermapen despigmentante", dur:"75 min", price:"$950" },
+    { name:"Blessed Oxygen Glow", sub:"facial oxigenante", dur:"70 min", price:"$650" },
+    { name:"Blessed Skin Renew", sub:"renovación con microdermoabrasión", dur:"70 min", price:"$700" },
+    { name:"Blessed Calm Restore", sub:"facial para piel sensible y reactiva", dur:"60 min", price:"$650" },
+    { name:"Blessed Face Sculpt", sub:"drenaje y tonificación facial", dur:"70 min", price:"$600" },
+    { name:"Blessed Diamond Lift", sub:"microdermoabrasión + radiofrecuencia", dur:"80 min", price:"$750" },
+    { name:"Blessed Collagen Lift", sub:"hilos de colágeno + radiofrecuencia", dur:"80 min", price:"$850" },
+    { name:"Blessed Skin Regeneration", sub:"microneedling / dermapen", dur:"75 min", price:"$950" },
+    { name:"Blessed Salmon Repair", sub:"microneedling con PDRN — ADN de salmón", dur:"80 min", price:"$1,499" },
+    { name:"Blessed Hydra Essential", sub:"hydra facial básico", dur:"90 min", price:"$799" },
+    { name:"Blessed Hydra Regeneration", sub:"hydra facial + microneedling con PDRN", dur:"100 min", price:"$1,500" },
+    { name:"Blessed Glass Signature", sub:"hydra facial glass skin", dur:"110 min", price:"$1,499" },
+  ];
+
+  const corporales = [
+    { group:"Espalda", items:[
+      { name:"Blessed Back Reset", sub:"limpieza profunda de espalda", dur:"75–90 min", price:"$550" },
+      { name:"Blessed Back Renew", sub:"microdermoabrasión corporal", dur:"75 min", price:"$650" },
+    ]},
+    { group:"Glúteos & busto", items:[
+      { name:"Blessed Peach Terapia", sub:"tratamiento integral de glúteos", dur:"75–90 min", price:"$700", badge:"Exclusivo mujeres" },
+      { name:"Blessed Peach Lift", sub:"radiofrecuencia + vacum para glúteos", dur:"60–75 min", price:"$950", badge:"Exclusivo mujeres" },
+      { name:"Blessed Bust Care", sub:"vacum para busto", dur:"40–50 min", price:"$750", badge:"Exclusivo mujeres" },
+    ]},
+    { group:"Despigmentantes", items:[
+      { name:"Blessed Even Body", sub:"protocolo por zona — axilas, cuello, codos o rodillas", dur:"50–60 min", price:"$550" },
+      { name:"Blessed Even Body Plus", sub:"protocolo despigmentante intensivo por zona", dur:"70 min", price:"$950" },
+    ]},
+    { group:"Reductivos & aparatología", items:[
+      { name:"Blessed Body Sculpt", sub:"masaje reductivo manual", dur:"60 min", price:"$650" },
+      { name:"Blessed Body Firm", sub:"masaje reductivo + radiofrecuencia", dur:"75 min", price:"$750" },
+      { name:"Blessed Body Active", sub:"masaje reductivo + gimnasia pasiva", dur:"75 min", price:"$799" },
+      { name:"Blessed Body Fusion", sub:"masaje reductivo + radiofrecuencia + gimnasia pasiva", dur:"90 min", price:"$1,100" },
+      { name:"Blessed Body Contour", sub:"cavitación + radiofrecuencia", dur:"60–75 min", price:"$950" },
+      { name:"Blessed Body Define", sub:"cavitación + radiofrecuencia + vacum", dur:"75–90 min", price:"$1,150" },
+      { name:"Blessed Body Elite", sub:"cavitación + radiofrecuencia + masaje reductivo + presoterapia", dur:"90–100 min", price:"$1,350" },
+    ]},
+    { group:"Piernas", items:[
+      { name:"Blessed Leg Relief", sub:"masaje de piernas + presoterapia", dur:"60 min", price:"$650" },
+      { name:"Blessed Leg Recovery", sub:"drenaje linfático manual + presoterapia", dur:"60 min", price:"$750" },
+      { name:"Blessed Leg Sport", sub:"masaje deportivo + presoterapia", dur:"60 min", price:"$800" },
+    ]},
+    { group:"Masajes relajantes & terapéuticos", items:[
+      { name:"Blessed Relax", sub:"masaje relajante", dur:"60 min", price:"$450" },
+      { name:"Blessed Deep Relief", sub:"masaje descontracturante", dur:"60 min", price:"$500" },
+      { name:"Blessed Target Therapy", sub:"masaje localizado", dur:"30 min", price:"$350" },
+      { name:"Blessed Sport Recovery", sub:"masaje deportivo", dur:"60 min", price:"$650" },
+      { name:"Blessed Hot Stone", sub:"masaje con piedras calientes", dur:"70 min", price:"$790" },
+      { name:"Blessed Aroma Therapy", sub:"masaje con aromaterapia", dur:"60 min", price:"$650" },
+      { name:"Blessed Candle Therapy", sub:"masaje con vela caliente", dur:"70 min", price:"$850" },
+    ]},
+  ];
+
+  /* ===================== RENDER ===================== */
+  function serviceItemHTML(s){
+    const hasDetail = !!(s.incl);
+    return `
+      <div class="service-item">
+        <button class="service-row" ${hasDetail ? '' : 'style="cursor:default;"'}>
+          <div class="service-name-wrap">
+            <div class="service-name-line">
+              <span class="service-name">${s.name}</span>
+              ${s.badge ? `<span class="service-badge">${s.badge}</span>` : ""}
+            </div>
+            ${s.sub ? `<span class="service-sub">${s.sub}</span>` : ""}
+            <span class="service-duration">${s.dur}</span>
+          </div>
+          <div class="service-right">
+            <span class="service-price">${s.price}</span>
+            ${hasDetail ? '<span class="service-plus"></span>' : ""}
+          </div>
+        </button>
+        ${hasDetail ? `<div class="service-desc"><div class="service-desc-inner"><strong>Incluye:</strong> ${s.incl}</div></div>` : ""}
+      </div>`;
+  }
+
+  document.getElementById('list-faciales').innerHTML = faciales.map(serviceItemHTML).join("");
+
+  document.getElementById('list-corporales').innerHTML = corporales.map(g => `
+    <div class="service-group-title">${g.group}</div>
+    <div class="service-list">${g.items.map(serviceItemHTML).join("")}</div>
+  `).join("");
+
+  /* Accordion behavior for service items with description */
+  document.querySelectorAll('.service-item').forEach(item => {
+    const row = item.querySelector('.service-row');
+    const desc = item.querySelector('.service-desc');
+    if (!desc) return;
+    row.addEventListener('click', () => {
+      const isOpen = item.classList.contains('open');
+      item.classList.toggle('open', !isOpen);
+      desc.style.maxHeight = isOpen ? null : desc.scrollHeight + 'px';
+    });
+  });
+
+  /* ===================== NAV ===================== */
+  const nav = document.getElementById('siteNav');
+  window.addEventListener('scroll', () => {
+    nav.classList.toggle('scrolled', window.scrollY > 30);
+  });
+
+  const navToggle = document.getElementById('navToggle');
+  const navLinks = document.getElementById('navLinks');
+  navToggle.addEventListener('click', () => navLinks.classList.toggle('open'));
+  navLinks.querySelectorAll('a').forEach(a => a.addEventListener('click', () => navLinks.classList.remove('open')));
+
+  /* ===================== SERVICE TABS ===================== */
+  const tabBtns = document.querySelectorAll('.tab-btn');
+  const panels = document.querySelectorAll('.tab-panel');
+  tabBtns.forEach(btn => {
+    btn.addEventListener('click', () => {
+      tabBtns.forEach(b => b.classList.remove('active'));
+      panels.forEach(p => p.classList.remove('active'));
+      btn.classList.add('active');
+      document.getElementById('panel-' + btn.dataset.tab).classList.add('active');
+    });
+  });
+
+  /* ===================== FAQ ACCORDION ===================== */
+  document.querySelectorAll('.faq-item').forEach(item => {
+    const q = item.querySelector('.faq-q');
+    const a = item.querySelector('.faq-a');
+    q.addEventListener('click', () => {
+      const isOpen = item.classList.contains('open');
+      document.querySelectorAll('.faq-item').forEach(i => {
+        i.classList.remove('open');
+        i.querySelector('.faq-a').style.maxHeight = null;
+      });
+      if (!isOpen) {
+        item.classList.add('open');
+        a.style.maxHeight = a.scrollHeight + 'px';
+      }
+    });
+  });
+
+  document.getElementById('year').textContent = new Date().getFullYear();
+</script>
+
+</body>
+</html>
